@@ -1,0 +1,21 @@
+spring:
+  profiles:
+    active: local
+  jpa:
+    open-in-view: false
+
+  datasource:
+    url: jdbc:mysql://localhost:3306/spring_jdbc
+    username: root
+    password: foresys
+
+#MyBatis
+mybatis:
+  type-aliases-package: study.demo.item.domain
+  configuration.map-underscore-to-camel-case: true
+  mapper-locations: classpath:mapper/**/*.xml
+
+#logging
+logging.level.org.hibernate.sql: debug
+#logging.level.org.hibernate.type.descriptor.sql.BasicBinder: trace
+#logging.level.study.demo.item.infrastructure.mybatis: trace
