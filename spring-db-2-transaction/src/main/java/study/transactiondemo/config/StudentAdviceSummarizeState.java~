@@ -1,0 +1,42 @@
+package study.transactiondemo.config;
+
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
+
+@Getter
+@RequiredArgsConstructor
+public enum StudentAdviceSummarizeState {
+
+    FILE_UPLOAD_PENDING("FILE_UPLOAD_PENDING", "파일 업로드 전 대기 상태") {
+        @Override
+        public StudentAdviceSummarizeState nextState() {
+            return VOICE_TO_TEXT_CONVERSION;
+        }
+    },
+
+    VOICE_TO_TEXT_CONVERSION("VOICE_TO_TEXT_CONVERSION", "음성을 텍스트로 변환 중인 상태") {
+        @Override
+        public StudentAdviceSummarizeState nextState() {
+            return TEXT_SUMMARIZATION;
+        }
+    },
+
+    TEXT_SUMMARIZATION("TEXT_SUMMARIZATION", "변환된 텍스트를 요약 중인 상태") {
+        @Override
+        public StudentAdviceSummarizeState nextState() {
+            return SUMMARY_COMPLETED;
+        }
+    },
+
+    SUMMARY_COMPLETED("SUMMARY_COMPLETED", "요약 완료 상태") {
+        @Override
+        public StudentAdviceSummarizeState nextState() {
+            throw new IllegalStateException("이미 최종 상태에 도달했습니다.");
+        }
+    };
+
+    private final String code;
+    private final String name;
+
+    public abstract StudentAdviceSummarizeState nextState();
+}
