@@ -125,17 +125,40 @@ public class BasicTxTest {
         TransactionStatus outer = tm.getTransaction(new DefaultTransactionAttribute());
         log.info("outer.isNewTransaction()={}", outer.isNewTransaction());
 
+        innerLogin_RequiresNew();
+
+        log.info("외부 트랜잭션 커밋");
+        tm.commit(outer);
+    }
+
+    @Test
+    void inner_commit_outer_rollback() {
+        log.info("외부 트랜잭션 시작");
+        TransactionStatus outer = tm.getTransaction(new DefaultTransactionAttribute());
+        log.info("outer.isNewTransaction()={}", outer.isNewTransaction());
+
         log.info("내부 트랜잭션 시작");
         DefaultTransactionAttribute definition = new DefaultTransactionAttribute();
-        definition.setPropagationBehavior(PROPAGATION_REQUIRES_NEW);
+        definition.setPropagationBehavior(PROPAGATION_REQUIRES_NEW); // 신규 트랜잭션 생성
+        TransactionStatus inner = tm.getTransaction(definition);
+        log.info("inner.isNewTransaction()={}", inner.isNewTransaction());
+        log.info("내부 트랜잭션 커밋");
+        tm.commit(inner);
+
+        log.info("외부 트랜잭션 롤백");
+        tm.rollback(outer);
+    }
+
+    // MEMO : 트랜잭션을 분리하려면 connection을 분리해야함.
+    private void innerLogin_RequiresNew() {
+        log.info("내부 트랜잭션 시작");
+        DefaultTransactionAttribute definition = new DefaultTransactionAttribute();
+        definition.setPropagationBehavior(PROPAGATION_REQUIRES_NEW); // 신규 트랜잭션 생성
         TransactionStatus inner = tm.getTransaction(definition);
         log.info("inner.isNewTransaction()={}", inner.isNewTransaction());
 
         log.info("내부 트랜잭션 롤백");
         tm.rollback(inner);
-
-        log.info("외부 트랜잭션 커밋");
-        tm.commit(outer);
     }
 
     @TestConfiguration
