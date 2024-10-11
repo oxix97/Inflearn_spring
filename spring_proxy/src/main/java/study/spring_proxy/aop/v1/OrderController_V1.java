@@ -1,16 +1,12 @@
 package study.spring_proxy.aop.v1;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
-@RequestMapping("/v1")
-@ResponseBody
+@RestController
 public interface OrderController_V1 {
-    @GetMapping("/request")
+    @GetMapping("/v1/request")
     String request(@RequestParam("itemId") String itemId);
 
-    @GetMapping("/no-log")
+    @GetMapping("/v1/no-log")
     String noLog();
 }
