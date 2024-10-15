@@ -1,4 +1,4 @@
-package study.spring_proxy.common;
+package study.spring_proxy.common.service;
 
 import lombok.extern.slf4j.Slf4j;
 

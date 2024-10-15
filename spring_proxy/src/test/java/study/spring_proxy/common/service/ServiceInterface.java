@@ -1,4 +1,4 @@
-package study.spring_proxy.common;
+package study.spring_proxy.common.service;
 
 public interface ServiceInterface {
     void save();
