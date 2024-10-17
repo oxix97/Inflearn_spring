@@ -10,6 +10,7 @@ import study.spring_proxy.config.v3_proxyfactory.ProxyFactoryConfig_V2;
 import study.spring_proxy.config.v4_postprocessor.postprocessor.BeanPostProcessorConfig;
 import study.spring_proxy.config.v4_postprocessor.postprocessor.PackageLogTracePostProcessor;
 import study.spring_proxy.config.v5_autoproxy.AutoProxyConfig;
+import study.spring_proxy.config.v6_aop.AopConfig;
 import study.spring_proxy.trace.logtrace.LogTrace;
 import study.spring_proxy.trace.logtrace.ThreadLocalLogTrace;
 
@@ -21,7 +22,8 @@ import study.spring_proxy.trace.logtrace.ThreadLocalLogTrace;
 //@Import(ProxyFactoryConfig_V1.class)
 //@Import(ProxyFactoryConfig_V2.class)
 //@Import(BeanPostProcessorConfig.class)
-@Import(AutoProxyConfig.class)
+//@Import(AutoProxyConfig.class)
+@Import(AopConfig.class)
 @SpringBootApplication(scanBasePackages = "study.spring_proxy.aop.v3")
 public class SpringProxyApplication {
 
