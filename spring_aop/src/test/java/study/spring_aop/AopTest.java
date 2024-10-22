@@ -8,10 +8,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.annotation.Import;
 import study.spring_aop.order.OrderRepository;
 import study.spring_aop.order.OrderService;
-import study.spring_aop.order.aop.AspectPointcut_V4;
-import study.spring_aop.order.aop.Aspect_V1;
-import study.spring_aop.order.aop.Aspect_V2;
-import study.spring_aop.order.aop.Aspect_V3;
+import study.spring_aop.order.aop.*;
 
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
@@ -20,7 +17,8 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 //@Import(Aspect_V1.class)
 //@Import(Aspect_V2.class)
 //@Import(Aspect_V3.class)
-@Import(AspectPointcut_V4.class)
+//@Import(AspectPointcut_V4.class)
+@Import({AspectOrder_V5.LogAspect.class,AspectOrder_V5.TransactionAspect.class})
 @SpringBootTest
 public class AopTest {
 
