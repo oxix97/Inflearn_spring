@@ -18,7 +18,8 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 //@Import(Aspect_V2.class)
 //@Import(Aspect_V3.class)
 //@Import(AspectPointcut_V4.class)
-@Import({AspectOrder_V5.LogAspect.class,AspectOrder_V5.TransactionAspect.class})
+//@Import({AspectOrder_V5.LogAspect.class,AspectOrder_V5.TransactionAspect.class})
+@Import(AspectAdvice_V6.class)
 @SpringBootTest
 public class AopTest {
 
