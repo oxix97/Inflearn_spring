@@ -9,12 +9,14 @@ import org.springframework.context.annotation.Import;
 import study.spring_aop.order.OrderRepository;
 import study.spring_aop.order.OrderService;
 import study.spring_aop.order.aop.Aspect_V1;
+import study.spring_aop.order.aop.Aspect_V2;
 
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 
 @Slf4j
-@Import(Aspect_V1.class)
+//@Import(Aspect_V1.class)
+@Import(Aspect_V2.class)
 @SpringBootTest
 public class AopTest {
 
