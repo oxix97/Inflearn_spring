@@ -1,0 +1,4 @@
+package study.spring_proxy.pureproxy.decorator.code;
+
+public class Decorator {
+}
