@@ -18,9 +18,11 @@ dependencies {
 	//web
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	//jpa
-	implementation 'org.springframework.boot:spring-boot-starter-jpa'
+	implementation 'org.springframework.boot:spring-boot-starter-jdbc'
 	//mysql
-	runtimeOnly 'com.mysql:mysql-connector-j'
+//	runtimeOnly 'com.mysql:mysql-connector-j'
+	//h2
+	runtimeOnly 'com.h2database:h2'
 	//lombok
 	compileOnly 'org.projectlombok:lombok'
 	annotationProcessor 'org.projectlombok:lombok'
